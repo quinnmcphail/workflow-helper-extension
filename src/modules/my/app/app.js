@@ -30,11 +30,13 @@ export default class App extends LightningElement {
         sfHostReturn
             .then(hostname => {
                 this.sfHost = hostname;
+                if (hostname !== null) {
+                    this.loaded = true;
+                }
                 return sessionReturn(hostname);
             })
             .then(session => {
                 this.session = JSON.stringify(session);
-                this.loaded = true;
             });
     }
 }
