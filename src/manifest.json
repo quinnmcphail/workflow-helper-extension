@@ -1,19 +1,19 @@
 {
-  "manifest_version": 2,
-  "name": "Workflow Helper",
-  "description": "Easily identify what your workflow rules are doing in Salesforce.",
-  "version": "1.0",
-  "permissions": [
-    "cookies",
-    "tabs",
-    "https://*.salesforce.com/*",
-    "https://*.force.com/*",
-    "https://*.cloudforce.com/*"
-  ],
-  "browser_action": {
-    "default_popup": "index.html"
-  },
-  "background": {
-    "scripts": ["background.js"]
-  }
+    "manifest_version": 2,
+    "name": "Workflow Helper",
+    "description": "Easily identify what your workflow rules are doing in Salesforce.",
+    "version": "1.0",
+    "permissions": [
+        "cookies",
+        "tabs",
+        "https://*.salesforce.com/*",
+        "https://*.force.com/*",
+        "https://*.cloudforce.com/*"
+    ],
+    "browser_action": {
+        "default_popup": "index.html"
+    },
+    "background": {
+        "scripts": ["background.js"]
+    }
 }

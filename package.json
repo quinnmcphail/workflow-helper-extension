@@ -1,6 +1,6 @@
 {
     "name": "workflow-helper-extension-lwc",
-    "description": "Workflow Helper chrome extension.",
+    "description": "Workflow Helper extension.",
     "version": "0.0.0",
     "author": "Quinn McPhail",
     "bugs": "https://github.com/qmcphail/workflow-helper-extension/issues",
