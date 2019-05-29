@@ -1,0 +1,51 @@
+{
+    "name": "workflow-helper-extension-lwc",
+    "description": "Workflow Helper chrome extension.",
+    "version": "0.0.0",
+    "author": "Quinn McPhail",
+    "bugs": "https://github.com/qmcphail/workflow-helper-extension/issues",
+    "dependencies": {
+        "lwc-services": "^1"
+    },
+    "devDependencies": {
+        "husky": "^1.3.1",
+        "lint-staged": "^8.1.5"
+    },
+    "engines": {
+        "node": ">=10.0.0"
+    },
+    "homepage": "https://github.com/qmcphail/workflow-helper-extension",
+    "husky": {
+        "hooks": {
+            "pre-push": "lint-staged"
+        }
+    },
+    "keywords": [
+        "lwc"
+    ],
+    "license": "MIT",
+    "lint-staged": {
+        "**/*.{css,html,js,json,md,yaml,yml}": [
+            "prettier --write"
+        ],
+        "**/modules/**": [
+            "eslint"
+        ],
+        "*": [
+            "git add"
+        ]
+    },
+    "repository": "qmcphail/workflow-helper-extension",
+    "scripts": {
+        "build": "lwc-services build && cp ./src/background.js ./dist/; cp ./src/manifest.json ./dist/",
+        "lint": "eslint ./src/**/*.js",
+        "prettier": "prettier --write '**/*.{css,html,js,json,md,yaml,yml}'",
+        "prettier:verify": "prettier --list-different '**/*.{css,html,js,json,md,yaml,yml}'",
+        "serve": "lwc-services build && lwc-services serve",
+        "test:unit": "lwc-services test",
+        "test:unit:coverage": "lwc-services test --coverage",
+        "test:unit:debug": "lwc-services test --debug",
+        "test:unit:watch": "lwc-services test --watch",
+        "watch": "lwc-services watch"
+    }
+}
