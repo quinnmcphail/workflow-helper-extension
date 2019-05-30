@@ -26,10 +26,10 @@
     ],
     "license": "MIT",
     "lint-staged": {
-        "**/src/**": [
+        "./src/**": [
             "prettier --write"
         ],
-        "**/modules/**": [
+        "./modules/**": [
             "eslint"
         ],
         "*": [
