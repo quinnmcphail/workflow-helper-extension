@@ -1,12 +1,19 @@
 <template>
-    <my-header></my-header>
-    <section>
-        <template if:true={loaded}>
-            <h1>Host: {sfHost}</h1>
-            <h1>Session: {session}</h1>
+    <template if:true={loaded}>
+        <ul>
+            <template for:each={fullNames} for:item="fullName">
+                <li key={fullName}>
+                    {fullName}
+                </li>
+            </template>
+        </ul>
+    </template>
+    <template if:false={loaded}>
+        <template if:false={error}>
+            <div>Loading...</div>
         </template>
-        <template if:false={loaded}>
-            <h1>Please try again on a Salesforce domain.</h1>
+        <template if:true={error}>
+            <div>Please try again on a Salesforce domain.</div>
         </template>
-    </section>
+    </template>
 </template>

@@ -1,10 +1,12 @@
 /* global chrome*/
 import { LightningElement, track } from 'lwc';
+import JSForce from '../../../resources/jsforce';
 
 export default class App extends LightningElement {
-    @track loaded = true;
-    @track sfHost;
-    @track session;
+    @track loaded = false;
+    @track error = false;
+    @track jsforce;
+    @track fullNames;
 
     connectedCallback() {
         const sfHostReturn = new Promise((resolve, reject) => {
@@ -29,14 +31,24 @@ export default class App extends LightningElement {
             });
         sfHostReturn
             .then(hostname => {
-                this.sfHost = hostname;
-                if (hostname !== null) {
-                    this.loaded = true;
-                }
                 return sessionReturn(hostname);
             })
             .then(session => {
-                this.session = JSON.stringify(session);
+                this.jsforce = new JSForce(session.hostname, session);
+            })
+            .then(() => {
+                return this.jsforce.getWorkflowMetadataSummary();
+            })
+            .then(workflowSummary => {
+                return workflowSummary.map(e => e.fullName);
+            })
+            .then(fullNames => {
+                this.fullNames = fullNames;
+                this.loaded = true;
+            })
+            .catch(err => {
+                this.error = true;
+                throw err;
             });
     }
 }

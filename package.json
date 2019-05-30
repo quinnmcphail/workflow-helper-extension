@@ -5,6 +5,7 @@
     "author": "Quinn McPhail",
     "bugs": "https://github.com/qmcphail/workflow-helper-extension/issues",
     "dependencies": {
+        "jsforce": "^1.9.1",
         "lwc-services": "^1"
     },
     "devDependencies": {
